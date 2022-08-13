@@ -1,11 +1,13 @@
 // TODO: Include packages needed for this application
 const fs = require("fs");
 const inquirer = require('inquirer');
+let badgeUrl;
+let licenseText;
 //const { writeFile, copyFile } = require('./utils/generate-site');
-const writeMarkdown = (dataObj) => {
+const writeMarkdown = (dataObj, badgeUrl) => {
   return`
 # ${dataObj.title}
-![License Badge](https://img.shields.io/badge/license-GNU-blue)
+![License Badge](${badgeUrl})
 ## Description
 ${dataObj.description}
 ## Table of Contents
@@ -20,26 +22,42 @@ ${dataObj.install}
 ## Usage
 ${dataObj.usage}
 ## License
-${dataObj.lisence}
+${dataObj.license}
+
+${licenseText}
 ## Contributing
 ${dataObj.contribute}
 ## Tests
 ${dataObj.test}
 ## Questions
+The link to my Github profile is:
+[${dataObj.username}]("https://github.com/${dataObj.username}")
+
+For any questions or comments please email me:
 ${dataObj.email}
 `;}
 function selectBadge(badgeChoice) {
   switch(badgeChoice) {
-    case MIT:
-      return "https://img.shields.io/badge/license-MIT-blue";
-      case GPL:
-        return "https://img.shields.io/badge/license-GPL-green";
-        case Mozilla:
-          return "https://img.shields.io/badge/license-MOZILLA-red";
-          case Apache:
-            return "https://img.shields.io/badge/license-APACHE-yellow";
-            case Boost:
-              return "https://img.shields.io/badge/license-BOOST-brightgreen";
+    case "MIT":
+      licenseText="A short and simple permissive license with conditions only requiring preservation of copyright and license notices. Licensed works, modifications, and larger works may be distributed under different terms and without source code."
+      badgeUrl= "https://img.shields.io/badge/license-MIT-blue";
+      break;
+      case "GPLv3":
+        licenseText="Permissions of this strong copyleft license are conditioned on making available complete source code of licensed works and modifications, which include larger works using a licensed work, under the same license. Copyright and license notices must be preserved. Contributors provide an express grant of patent rights."
+        badgeUrl= "https://img.shields.io/badge/license-GPLv3-green";
+        break;
+        case "Mozilla":
+          licenseText="Permissions of this weak copyleft license are conditioned on making available source code of licensed files and modifications of those files under the same license (or in certain cases, one of the GNU licenses). Copyright and license notices must be preserved. Contributors provide an express grant of patent rights. However, a larger work using the licensed work may be distributed under different terms and without source code for files added in the larger work."
+          badgeUrl= "https://img.shields.io/badge/license-MOZILLA-red";
+          break;
+          case "Apache":
+            licenseText="A permissive license whose main conditions require preservation of copyright and license notices. Contributors provide an express grant of patent rights. Licensed works, modifications, and larger works may be distributed under different terms and without source code."
+            badgeUrl= "https://img.shields.io/badge/license-APACHE-yellow";
+            break;
+            case "Boost":
+              licenseText="A simple permissive license only requiring preservation of copyright and license notices for source (and not binary) distribution. Licensed works, modifications, and larger works may be distributed under different terms and without source code."
+              badgeUrl= "https://img.shields.io/badge/license-BOOST-brightgreen";
+              break;
               default:
                 break;
   }
@@ -105,7 +123,7 @@ const askQuestions = () => {
         type: 'list',
         name: 'license',
         message: 'Please choose a license',
-        choices: ['MIT', 'GPL', 'Mozilla', 'Apache', 'Boost']
+        choices: ['MIT', 'GPLv3', 'Mozilla', 'Apache', 'Boost']
       },
       {
         type: 'input',
@@ -175,8 +193,8 @@ const askQuestions = () => {
 ])
 .then(projectData => {
   console.log(projectData.title);
-  
-  writeToFile("README.md", writeMarkdown(projectData).toString() );
+  selectBadge(projectData.license);
+  writeToFile("README.md", writeMarkdown(projectData, badgeUrl).toString() );
 });
 }
 
