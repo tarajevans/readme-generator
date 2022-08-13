@@ -113,7 +113,7 @@ const askQuestions = () => {
       {
         type: 'input',
         name: 'usage',
-        message: 'Enter the your usage informaion for this project. (Required)',
+        message: 'Enter the usage informaion for this project. (Required)',
         validate: usageInput => {
           if (usageInput) {
             return true;
