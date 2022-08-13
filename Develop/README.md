@@ -1,8 +1,8 @@
 
-# wioetoiwaeh
-![License Badge](https://img.shields.io/badge/license-BOOST-brightgreen)
+# Readme Generator
+![License Badge](https://img.shields.io/badge/license-MOZILLA-red)
 ## Description
-weotiihweoigh
+an app that generates a readme
 ## Table of Contents
 - [Installation](#installation)
 - [Usage](#usage)
@@ -11,20 +11,23 @@ weotiihweoigh
 - [Tests](#tests)
 - [Questions](#questions)
 ## Installation
-wetoweiogh
+install all the things
 ## Usage
-]weeoiwiejgoig
+use all the things
 ## License
-Boost
+Mozilla
 
-A simple permissive license only requiring preservation of copyright and license notices for source (and not binary) distribution. Licensed works, modifications, and larger works may be distributed under different terms and without source code.
+Permissions of this weak copyleft license are conditioned on making available source code of licensed files and modifications of those files under the same license (or in certain cases, one of the GNU licenses). Copyright and license notices must be preserved. Contributors provide an express grant of patent rights. However, a larger work using the licensed work may be distributed under different terms and without source code for files added in the larger work.
 ## Contributing
-wuhewhue
+contribute all the things
 ## Tests
-wioehtawo
+test all the things
 ## Questions
 The link to my Github profile is:
-[tarajevans]("https://github.com/tarajevans")
+tarajevans(https://github.com/tarajevans)
 
 For any questions or comments please email me:
 tarajevans@hotmail.com
+
+The deployed link for this project is here:
+https://tarajevans.github.io/readme-generator/

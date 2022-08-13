@@ -31,10 +31,13 @@ ${dataObj.contribute}
 ${dataObj.test}
 ## Questions
 The link to my Github profile is:
-[${dataObj.username}]("https://github.com/${dataObj.username}")
+${dataObj.username}https://github.com/${dataObj.username}
 
 For any questions or comments please email me:
 ${dataObj.email}
+
+The deployed link for this project is here:
+${dataObj.deployed}
 `;}
 function selectBadge(badgeChoice) {
   switch(badgeChoice) {
