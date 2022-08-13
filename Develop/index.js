@@ -1,13 +1,20 @@
 // TODO: Include packages needed for this application
 const fs = require("fs");
 const inquirer = require('inquirer');
+//const { writeFile, copyFile } = require('./utils/generate-site');
 const writeMarkdown = (dataObj) => {
   return`
 # ${dataObj.title}
+![License Badge](https://img.shields.io/badge/license-GNU-blue)
 ## Description
 ${dataObj.description}
 ## Table of Contents
-
+- [Installation](#installation)
+- [Usage](#usage)
+- [License](#license)
+- [Contributing](#contributing)
+- [Tests](#tests)
+- [Questions](#questions)
 ## Installation
 ${dataObj.install}
 ## Usage
@@ -21,7 +28,22 @@ ${dataObj.test}
 ## Questions
 ${dataObj.email}
 `;}
-//const { writeFile, copyFile } = require('./utils/generate-site');
+function selectBadge(badgeChoice) {
+  switch(badgeChoice) {
+    case MIT:
+      return "https://img.shields.io/badge/license-MIT-blue";
+      case GPL:
+        return "https://img.shields.io/badge/license-GPL-green";
+        case Mozilla:
+          return "https://img.shields.io/badge/license-MOZILLA-red";
+          case Apache:
+            return "https://img.shields.io/badge/license-APACHE-yellow";
+            case Boost:
+              return "https://img.shields.io/badge/license-BOOST-brightgreen";
+              default:
+                break;
+  }
+} 
 
 // TODO: Create an array of questions for user input
 const askQuestions = () => { 
@@ -83,7 +105,7 @@ const askQuestions = () => {
         type: 'list',
         name: 'license',
         message: 'Please choose a license',
-        choices: ['MIT', 'GNU GPLv3', 'Mozilla', 'Apache', 'Boost']
+        choices: ['MIT', 'GPL', 'Mozilla', 'Apache', 'Boost']
       },
       {
         type: 'input',
